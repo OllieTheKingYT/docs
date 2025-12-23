@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Velto Docs – Attributes</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="sidebar">
+    <h1>Velto Docs</h1>
+    <ul>
+        <li><a href="syntax.html">Syntax</a></li>
+        <li><a href="tags.html">Tags</a></li>
+        <li><a href="attributes.html">Attributes</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="parsing.html">Parsing Rules</a></li>
+        <li><a href="runtime-contract.html">Runtime Contract</a></li>
+        <li><a href="roadmap.html">Roadmap</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+</div>
+
+<div class="main">
+    <h2>Velto Attributes</h2>
+    <p>
+        Attributes in Velto fall into three broad categories: structural attributes, presentation attributes, and
+        behaviour attributes. This section defines how attributes are named, how they are interpreted, and how runtimes
+        should handle unknown attributes.
+    </p>
+
+    <h3>Naming rules</h3>
+    <ul>
+        <li>Attribute names MUST be lowercase.</li>
+        <li>Attribute names MAY contain hyphens (<code>-</code>) and colons (<code>:</code>).</li>
+        <li>Behaviour attributes SHOULD use the form <code>on-event:action</code>.</li>
+    </ul>
+
+    <h3>Structural attributes</h3>
+    <p>
+        Structural attributes describe identity and structure, and generally map directly to HTML attributes.
+    </p>
+    <ul>
+        <li><code>id</code> – unique identifier within the document.</li>
+        <li><code>class</code> – space‑separated list of classes.</li>
+        <li><code>data-*</code> – custom data attributes passed through to the DOM.</li>
+    </ul>
+
+    <pre><code>&lt;text1 id="intro" class="lead"&gt;
+  Welcome to Velto
+&lt;/text1&gt;
+</code></pre>
+
+    <h3>Presentation attributes</h3>
+    <p>
+        Presentation attributes control visual appearance. Velto does not define its own styling model; instead, it
+        passes presentation attributes to the underlying platform.
+    </p>
+    <ul>
+        <li><code>style</code> – inline CSS styles.</li>
+        <li>Any other attributes understood by the target HTML element.</li>
+    </ul>
+
+    <pre><code>&lt;text2 style="color: #888; font-size: 0.9rem;"&gt;
+  Secondary text
+&lt;/text2&gt;
+</code></pre>
+
+    <h3>Behaviour attributes</h3>
+    <p>
+        Behaviour attributes trigger interactive behaviour, usually in response to events. They follow the form
+        <code>on-event:action</code> and are interpreted by the Velto runtime.
+    </p>
+
+    <h4>on-click:redirect</h4>
+    <p>
+        Redirects the browser to the given URL when the element is clicked.
+    </p>
+    <pre><code>&lt;button on-click:redirect="https://example.com"&gt;
+  Go to example
+&lt;/button&gt;
+</code></pre>
+
+    <h4>on-click:alert</h4>
+    <p>
+        Shows a native alert dialog with the provided message.
+    </p>
+    <pre><code>&lt;button on-click:alert="Button clicked!"&gt;
+  Click me
+&lt;/button&gt;
+</code></pre>
+
+    <h4>on-click:log</h4>
+    <p>
+        Logs a message using the Velto runtime's logging facilities.
+    </p>
+    <pre><code>&lt;button on-click:log="User clicked the button"&gt;
+  Log action
+&lt;/button&gt;
+</code></pre>
+
+    <h3>Unknown attributes</h3>
+    <p>
+        Unknown attributes (those not recognised as behaviours) MUST be passed through to the underlying DOM element.
+        Runtimes MAY log a warning in development mode, but MUST NOT remove or modify unknown attributes.
+    </p>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>
