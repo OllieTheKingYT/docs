@@ -1,6 +1,6 @@
 # Velto Specification
 
-The **Velto Specification** defines the Velto Markup Language — its syntax, structure, tags, attributes, events, and the rules that govern how Velto documents must be interpreted.
+The **Velto Documentation** defines how people use the Velto Markup Language — its syntax, structure, tags, attributes, events, and the rules that govern how Velto documents must be interpreted.
 
 This repository is the *source of truth* for the Velto language.  
 All runtimes, tools, editors, and implementations must follow this specification.
