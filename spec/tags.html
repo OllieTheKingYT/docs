@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Velto Docs – Tags</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="sidebar">
+    <h1>Velto Docs</h1>
+    <ul>
+        <li><a href="syntax.html">Syntax</a></li>
+        <li><a href="tags.html">Tags</a></li>
+        <li><a href="attributes.html">Attributes</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="parsing.html">Parsing Rules</a></li>
+        <li><a href="runtime-contract.html">Runtime Contract</a></li>
+        <li><a href="roadmap.html">Roadmap</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+</div>
+
+<div class="main">
+    <h2>Velto Tags</h2>
+    <p>
+        Velto provides a minimal set of built‑in tags that map to HTML elements. Additional semantics are defined by
+        attributes and behaviours. This section describes each standard Velto tag and its expected behaviour.
+    </p>
+
+    <h3>&lt;velto&gt;</h3>
+    <p>
+        The <code>&lt;velto&gt;</code> element is the root of every Velto document.
+    </p>
+    <ul>
+        <li>Required: YES (exactly one per document).</li>
+        <li>Allowed parents: none (it is the root).</li>
+        <li>Allowed children: any Velto element.</li>
+        <li>Default HTML mapping: <code>&lt;div&gt;</code>.</li>
+    </ul>
+
+    <h3>&lt;content&gt;</h3>
+    <p>
+        The <code>&lt;content&gt;</code> element represents the primary content container.
+    </p>
+    <ul>
+        <li>Required: NO.</li>
+        <li>Allowed parents: <code>&lt;velto&gt;</code> or other containers.</li>
+        <li>Allowed children: any Velto element.</li>
+        <li>Default HTML mapping: <code>&lt;div&gt;</code>.</li>
+    </ul>
+
+    <h3>&lt;text1&gt;</h3>
+    <p>
+        The <code>&lt;text1&gt;</code> element represents primary text content, typically paragraph‑level copy.
+    </p>
+    <ul>
+        <li>Allowed parents: any container tag.</li>
+        <li>Allowed children: text nodes only.</li>
+        <li>Default HTML mapping: <code>&lt;p&gt;</code>.</li>
+    </ul>
+
+    <h3>&lt;text2&gt;</h3>
+    <p>
+        The <code>&lt;text2&gt;</code> element represents secondary text content, such as captions or supporting text.
+    </p>
+    <ul>
+        <li>Allowed parents: any container tag.</li>
+        <li>Allowed children: text nodes only.</li>
+        <li>Default HTML mapping: <code>&lt;p&gt;</code> (runtime MAY style differently).</li>
+    </ul>
+
+    <h3>&lt;button&gt;</h3>
+    <p>
+        The <code>&lt;button&gt;</code> element represents an interactive control that can trigger actions or navigation.
+    </p>
+    <ul>
+        <li>Allowed parents: any container tag.</li>
+        <li>Allowed children: text nodes or inline elements.</li>
+        <li>Default HTML mapping: <code>&lt;button&gt;</code>.</li>
+    </ul>
+
+    <pre><code>&lt;button on-click:redirect="https://example.com"&gt;
+  Go to example
+&lt;/button&gt;
+</code></pre>
+
+    <h3>&lt;image&gt;</h3>
+    <p>
+        The <code>&lt;image&gt;</code> element represents visual content.
+    </p>
+    <ul>
+        <li>Allowed parents: any container tag.</li>
+        <li>Allowed children: none (self‑contained).</li>
+        <li>Required attributes: <code>src</code>.</li>
+        <li>Optional attributes: <code>alt</code>, behaviour attributes.</li>
+        <li>Default HTML mapping: <code>&lt;img&gt;</code>.</li>
+    </ul>
+
+    <pre><code>&lt;image src="hero.png" alt="Hero image" /&gt;
+</code></pre>
+
+    <h3>Unknown tags</h3>
+    <p>
+        Unknown tags are not forbidden, but they are implementation‑defined. The reference Velto runtime maps unknown
+        tags to <code>&lt;div&gt;</code> and emits a console warning. Future versions of the spec may define custom tag
+        registration for user‑defined components.
+    </p>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>
