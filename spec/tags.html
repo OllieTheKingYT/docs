@@ -25,88 +25,265 @@
 <div class="main">
     <h2>Velto Tags</h2>
     <p>
-        Velto provides a minimal set of built‑in tags that map to HTML elements. Additional semantics are defined by
-        attributes and behaviours. This section describes each standard Velto tag and its expected behaviour.
+        Velto v0.4 introduces a significantly expanded tag set. Tags are semantic, Velto‑native, and map to HTML
+        elements at runtime. This section documents every built‑in tag and its default mapping.
     </p>
 
+    <!-- ROOT -->
     <h3>&lt;velto&gt;</h3>
-    <p>
-        The <code>&lt;velto&gt;</code> element is the root of every Velto document.
-    </p>
+    <p>The root element of every Velto document.</p>
     <ul>
-        <li>Required: YES (exactly one per document).</li>
-        <li>Allowed parents: none (it is the root).</li>
-        <li>Allowed children: any Velto element.</li>
-        <li>Default HTML mapping: <code>&lt;div&gt;</code>.</li>
+        <li>Required: YES</li>
+        <li>Children: any Velto element</li>
+        <li>Maps to: <code>&lt;div&gt;</code></li>
     </ul>
 
     <h3>&lt;content&gt;</h3>
-    <p>
-        The <code>&lt;content&gt;</code> element represents the primary content container.
-    </p>
+    <p>Main content container.</p>
     <ul>
-        <li>Required: NO.</li>
-        <li>Allowed parents: <code>&lt;velto&gt;</code> or other containers.</li>
-        <li>Allowed children: any Velto element.</li>
-        <li>Default HTML mapping: <code>&lt;div&gt;</code>.</li>
+        <li>Maps to: <code>&lt;div&gt;</code></li>
     </ul>
+
+    <!-- TEXT TAGS -->
+    <h2>Text Tags</h2>
 
     <h3>&lt;text1&gt;</h3>
-    <p>
-        The <code>&lt;text1&gt;</code> element represents primary text content, typically paragraph‑level copy.
-    </p>
-    <ul>
-        <li>Allowed parents: any container tag.</li>
-        <li>Allowed children: text nodes only.</li>
-        <li>Default HTML mapping: <code>&lt;p&gt;</code>.</li>
-    </ul>
+    <p>Primary text block.</p>
+    <ul><li>Maps to: <code>&lt;p&gt;</code></li></ul>
 
     <h3>&lt;text2&gt;</h3>
-    <p>
-        The <code>&lt;text2&gt;</code> element represents secondary text content, such as captions or supporting text.
-    </p>
-    <ul>
-        <li>Allowed parents: any container tag.</li>
-        <li>Allowed children: text nodes only.</li>
-        <li>Default HTML mapping: <code>&lt;p&gt;</code> (runtime MAY style differently).</li>
-    </ul>
+    <p>Secondary text block.</p>
+    <ul><li>Maps to: <code>&lt;p&gt;</code></li></ul>
 
-    <h3>&lt;button&gt;</h3>
-    <p>
-        The <code>&lt;button&gt;</code> element represents an interactive control that can trigger actions or navigation.
-    </p>
-    <ul>
-        <li>Allowed parents: any container tag.</li>
-        <li>Allowed children: text nodes or inline elements.</li>
-        <li>Default HTML mapping: <code>&lt;button&gt;</code>.</li>
-    </ul>
+    <h3>&lt;text3&gt;</h3>
+    <p>Inline text.</p>
+    <ul><li>Maps to: <code>&lt;span&gt;</code></li></ul>
 
-    <pre><code>&lt;button on-click:redirect="https://example.com"&gt;
-  Go to example
-&lt;/button&gt;
-</code></pre>
+    <h3>&lt;title1&gt;</h3>
+    <p>Main heading.</p>
+    <ul><li>Maps to: <code>&lt;h1&gt;</code></li></ul>
+
+    <h3>&lt;title2&gt;</h3>
+    <p>Section heading.</p>
+    <ul><li>Maps to: <code>&lt;h2&gt;</code></li></ul>
+
+    <h3>&lt;title3&gt;</h3>
+    <p>Subheading.</p>
+    <ul><li>Maps to: <code>&lt;h3&gt;</code></li></ul>
+
+    <h3>&lt;caption&gt;</h3>
+    <p>Small descriptive text.</p>
+    <ul><li>Maps to: <code>&lt;small&gt;</code></li></ul>
+
+    <h3>&lt;code&gt;</h3>
+    <p>Inline code snippet.</p>
+    <ul><li>Maps to: <code>&lt;code&gt;</code></li></ul>
+
+    <!-- LAYOUT TAGS -->
+    <h2>Layout Tags</h2>
+
+    <h3>&lt;row&gt;</h3>
+    <p>Horizontal layout container.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;column&gt;</h3>
+    <p>Vertical layout container.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;stack&gt;</h3>
+    <p>Generic stacking container.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;hstack&gt;</h3>
+    <p>Horizontal stack.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;vstack&gt;</h3>
+    <p>Vertical stack.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;spacer&gt;</h3>
+    <p>Flexible empty space.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;grid&gt;</h3>
+    <p>Grid layout container.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;griditem&gt;</h3>
+    <p>Grid cell.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;section&gt;</h3>
+    <p>Document section.</p>
+    <ul><li>Maps to: <code>&lt;section&gt;</code></li></ul>
+
+    <h3>&lt;block&gt;</h3>
+    <p>Generic block container.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;group&gt;</h3>
+    <p>Logical grouping container.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;panel&gt;</h3>
+    <p>Panel container.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;surface&gt;</h3>
+    <p>Surface container (e.g., card background).</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;container&gt;</h3>
+    <p>Generic container.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <!-- MEDIA TAGS -->
+    <h2>Media Tags</h2>
 
     <h3>&lt;image&gt;</h3>
-    <p>
-        The <code>&lt;image&gt;</code> element represents visual content.
-    </p>
-    <ul>
-        <li>Allowed parents: any container tag.</li>
-        <li>Allowed children: none (self‑contained).</li>
-        <li>Required attributes: <code>src</code>.</li>
-        <li>Optional attributes: <code>alt</code>, behaviour attributes.</li>
-        <li>Default HTML mapping: <code>&lt;img&gt;</code>.</li>
-    </ul>
+    <p>Static image.</p>
+    <ul><li>Maps to: <code>&lt;img&gt;</code></li></ul>
 
-    <pre><code>&lt;image src="hero.png" alt="Hero image" /&gt;
-</code></pre>
+    <h3>&lt;icon&gt;</h3>
+    <p>Small icon image.</p>
+    <ul><li>Maps to: <code>&lt;img&gt;</code></li></ul>
 
-    <h3>Unknown tags</h3>
+    <h3>&lt;video&gt;</h3>
+    <p>Video element.</p>
+    <ul><li>Maps to: <code>&lt;video&gt;</code></li></ul>
+
+    <h3>&lt;audio&gt;</h3>
+    <p>Audio element.</p>
+    <ul><li>Maps to: <code>&lt;audio&gt;</code></li></ul>
+
+    <!-- INTERACTIVE TAGS -->
+    <h2>Interactive Tags</h2>
+
+    <h3>&lt;button&gt;</h3>
+    <p>Clickable button.</p>
+    <ul><li>Maps to: <code>&lt;button&gt;</code></li></ul>
+
+    <h3>&lt;link&gt;</h3>
+    <p>Hyperlink.</p>
+    <ul><li>Maps to: <code>&lt;a&gt;</code></li></ul>
+
+    <h3>&lt;input&gt;</h3>
+    <p>Text input.</p>
+    <ul><li>Maps to: <code>&lt;input&gt;</code></li></ul>
+
+    <h3>&lt;checkbox&gt;</h3>
+    <p>Checkbox input.</p>
+    <ul><li>Maps to: <code>&lt;input type="checkbox"&gt;</code></li></ul>
+
+    <h3>&lt;radio&gt;</h3>
+    <p>Radio button.</p>
+    <ul><li>Maps to: <code>&lt;input type="radio"&gt;</code></li></ul>
+
+    <h3>&lt;slider&gt;</h3>
+    <p>Range slider.</p>
+    <ul><li>Maps to: <code>&lt;input type="range"&gt;</code></li></ul>
+
+    <h3>&lt;switch&gt;</h3>
+    <p>Toggle switch.</p>
+    <ul><li>Maps to: <code>&lt;input type="checkbox"&gt;</code></li></ul>
+
+    <h3>&lt;form&gt;</h3>
+    <p>Form container.</p>
+    <ul><li>Maps to: <code>&lt;form&gt;</code></li></ul>
+
+    <!-- LIST TAGS -->
+    <h2>List Tags</h2>
+
+    <h3>&lt;list&gt;</h3>
+    <p>Unordered list.</p>
+    <ul><li>Maps to: <code>&lt;ul&gt;</code></li></ul>
+
+    <h3>&lt;item&gt;</h3>
+    <p>List item.</p>
+    <ul><li>Maps to: <code>&lt;li&gt;</code></li></ul>
+
+    <h3>&lt;menu&gt;</h3>
+    <p>Menu container.</p>
+    <ul><li>Maps to: <code>&lt;ul&gt;</code></li></ul>
+
+    <h3>&lt;menuitem&gt;</h3>
+    <p>Menu item.</p>
+    <ul><li>Maps to: <code>&lt;li&gt;</code></li></ul>
+
+    <!-- DECORATIVE TAGS -->
+    <h2>Decorative Tags</h2>
+
+    <h3>&lt;card&gt;</h3>
+    <p>Card container.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;hero&gt;</h3>
+    <p>Hero section.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;banner&gt;</h3>
+    <p>Banner section.</p>
+    <ul><li>Maps to: <code>&lt;div&gt;</code></li></ul>
+
+    <h3>&lt;divider&gt;</h3>
+    <p>Horizontal divider.</p>
+    <ul><li>Maps to: <code>&lt;hr&gt;</code></li></ul>
+
+    <h3>&lt;badge&gt;</h3>
+    <p>Small label.</p>
+    <ul><li>Maps to: <code>&lt;span&gt;</code></li></ul>
+
+    <h3>&lt;tag&gt;</h3>
+    <p>Tag label.</p>
+    <ul><li>Maps to: <code>&lt;span&gt;</code></li></ul>
+
+    <h3>&lt;pill&gt;</h3>
+    <p>Pill‑shaped label.</p>
+    <ul><li>Maps to: <code>&lt;span&gt;</code></li></ul>
+
+    <!-- STRUCTURAL TAGS -->
+    <h2>Structural Tags</h2>
+
+    <h3>&lt;header&gt;</h3>
+    <p>Page header.</p>
+    <ul><li>Maps to: <code>&lt;header&gt;</code></li></ul>
+
+    <h3>&lt;footer&gt;</h3>
+    <p>Page footer.</p>
+    <ul><li>Maps to: <code>&lt;footer&gt;</code></li></ul>
+
+    <h3>&lt;nav&gt;</h3>
+    <p>Navigation container.</p>
+    <ul><li>Maps to: <code>&lt;nav&gt;</code></li></ul>
+
+    <h3>&lt;aside&gt;</h3>
+    <p>Sidebar or supplementary content.</p>
+    <ul><li>Maps to: <code>&lt;aside&gt;</code></li></ul>
+
+    <h3>&lt;article&gt;</h3>
+    <p>Standalone article.</p>
+    <ul><li>Maps to: <code>&lt;article&gt;</code></li></ul>
+
+    <h3>&lt;note&gt;</h3>
+    <p>Informational note.</p>
+    <ul><li>Maps to: <code>&lt;aside&gt;</code></li></ul>
+
+    <h3>&lt;warning&gt;</h3>
+    <p>Warning block.</p>
+    <ul><li>Maps to: <code>&lt;aside&gt;</code></li></ul>
+
+    <h3>&lt;info&gt;</h3>
+    <p>Info block.</p>
+    <ul><li>Maps to: <code>&lt;aside&gt;</code></li></ul>
+
+    <!-- UNKNOWN TAGS -->
+    <h2>Unknown Tags</h2>
     <p>
-        Unknown tags are not forbidden, but they are implementation‑defined. The reference Velto runtime maps unknown
-        tags to <code>&lt;div&gt;</code> and emits a console warning. Future versions of the spec may define custom tag
-        registration for user‑defined components.
+        Unknown tags are allowed. The reference runtime maps them to <code>&lt;div&gt;</code> and logs a warning.
+        Future versions of Velto may support custom tag registration.
     </p>
+
 </div>
 
 <script src="../assets/script.js"></script>
