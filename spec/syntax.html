@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Velto Docs – Syntax</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="sidebar">
+    <h1>Velto Docs</h1>
+    <ul>
+        <li><a href="syntax.html">Syntax</a></li>
+        <li><a href="tags.html">Tags</a></li>
+        <li><a href="attributes.html">Attributes</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="parsing.html">Parsing Rules</a></li>
+        <li><a href="runtime-contract.html">Runtime Contract</a></li>
+        <li><a href="roadmap.html">Roadmap</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+</div>
+
+<div class="main">
+    <h2>Velto Syntax</h2>
+    <p>
+        The Velto Markup Language is an XML‑based, declarative language. A Velto document describes UI structure and
+        behaviour using a small set of custom tags and attributes. This page defines the core syntax rules that every
+        Velto runtime must follow.
+    </p>
+
+    <h3>Document structure</h3>
+    <p>
+        A Velto document MUST contain exactly one <code>&lt;velto&gt;</code> root element. All other Velto elements
+        MUST be descendants of this root.
+    </p>
+
+    <pre><code>&lt;velto&gt;
+  &lt;content&gt;
+    &lt;text1&gt;Hello from Velto&lt;/text1&gt;
+  &lt;/content&gt;
+&lt;/velto&gt;
+</code></pre>
+
+    <h3>Tag syntax</h3>
+    <p>
+        Velto tags follow XML syntax:
+    </p>
+    <ul>
+        <li>Tags MUST be properly opened and closed.</li>
+        <li>Tag names are case‑sensitive and MUST be lowercase.</li>
+        <li>Tags MAY be nested, subject to semantic rules defined in the Tags section.</li>
+    </ul>
+
+    <pre><code>&lt;text1&gt;Hello&lt;/text1&gt;
+&lt;button&gt;Click me&lt;/button&gt;
+</code></pre>
+
+    <h3>Attribute syntax</h3>
+    <p>
+        Attributes MUST follow standard XML attribute syntax:
+    </p>
+    <ul>
+        <li>Attribute names MUST be lowercase.</li>
+        <li>Attribute values MUST be quoted with double quotes (<code>"</code>).</li>
+        <li>Attributes MUST NOT appear more than once on the same element.</li>
+    </ul>
+
+    <pre><code>&lt;button on-click:redirect="https://example.com"&gt;
+  Go to example
+&lt;/button&gt;
+</code></pre>
+
+    <h3>Whitespace</h3>
+    <p>
+        Velto treats whitespace according to XML rules:
+    </p>
+    <ul>
+        <li>Whitespace between tags is preserved in text nodes.</li>
+        <li>Indentation and newlines are allowed and encouraged for readability.</li>
+        <li>Runtimes MAY normalise whitespace when mapping to DOM, consistent with HTML behaviour.</li>
+    </ul>
+
+    <h3>Comments</h3>
+    <p>
+        Velto supports XML comments. Comments MUST NOT affect runtime behaviour.
+    </p>
+
+    <pre><code>&lt;velto&gt;
+  &lt;!-- This is a Velto comment --&gt;
+  &lt;content&gt;...&lt;/content&gt;
+&lt;/velto&gt;
+</code></pre>
+
+    <h3>File extension</h3>
+    <p>
+        Velto documents SHOULD use the <code>.velto</code> file extension. Runtimes MAY support alternative extensions,
+        but <code>.velto</code> is the canonical form.
+    </p>
+</div>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>
